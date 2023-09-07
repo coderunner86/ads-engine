@@ -1,0 +1,58 @@
+{% extends "includes/layout.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% block body %}
+<!--Info Box -->
+<!-- Main Item Starts Here -->
+<link rel="stylesheet" href="/client/static/css/styles.css">
+<style>
+    .emoji-big {
+        font-size: 4em;
+        /* Ajusta el tamaño como desees */
+    }
+</style>
+<main class="container">
+    <div class="row">
+        <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+            <div class="my-5 text-center">
+                <p> <br>
+
+
+                </p>
+                <p class="lead">Nuestro algoritmo de calculo de similitud buscará la
+                    <strong><em> audiencia mas similar </em></strong>
+                    existente en nuestra fuente de datos externa.
+                </p>
+                <!-- Formulario Flask-WTF -->
+                <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+                            <div class="card border-0 bg-dark custom-form">
+                                <div class="card-header">
+                                    <h5 class="text-center text-primary">
+                                        <p> <br>
+
+
+                                        </p>
+                                        <p>Escribe tu consulta</p>
+                                    </h5>
+                                    <span class="emoji-big">😀</span>
+                                </div>
+                                <div class="card-body text-center"> <!-- Agregamos la clase text-center aquí -->
+                                    <form action="/match_audience" method="POST">
+                                        {{ render_form(form) }}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Otro-->
+
+    <!-- TODO: form GrapqhQl Schema -->
+</main>
+<!--Main Item Ends Here-->
+{% endblock %}
