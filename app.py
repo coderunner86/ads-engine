@@ -12,10 +12,6 @@ from wtforms.validators import DataRequired, Length
 from flask_cors import CORS
 
 from client.entities.entity import engine, Base
-
-from client.engine.fetch_audiences import fetch_custom_audiences 
-from client.engine.text_processing import preprocess_text
-from client.engine.match_audience import find_best_match
 from client.engine.open_ai_request import get_openai_response
 from client.engine.database import save_recommendation
 from client.engine.download_csv import download_csv
@@ -43,7 +39,7 @@ class MyForm(FlaskForm):
     query = StringField('Which audience is your favorite?', validators=[DataRequired(), Length(min=5, max=50)])
     submit = SubmitField('Submit')
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
 def home():
     return render_template('index.html')
 
@@ -58,12 +54,9 @@ def search_engine():
 def match_audience():
     try:
         user_input = request.form.get('query')
-        custom_audiences = fetch_custom_audiences()
-        processed_input = preprocess_text(user_input)
-        best_match = find_best_match(processed_input, custom_audiences)
-        ad_text = get_openai_response(best_match)
+        ad_text = get_openai_response(user_input)
         last_id = save_recommendation(user_input, ad_text)
-        return render_template('match_audience.html', keywords=best_match, user_input=user_input, ad_text=ad_text, last_id=last_id)
+        return render_template('match_audience.html', keywords=user_input, user_input=user_input, ad_text=ad_text, last_id=last_id)
     except Exception as e:
         error_message = str(e)
         return render_template('error.html', error_message=error_message)

@@ -1,12 +1,21 @@
 # helpers/openai_request.py
 import requests
+import json
+def get_openai_response(query):
 
-def get_openai_response(best_match):
-    payload = {
-        "query": best_match
-    }
-    response = requests.post("https://8sng98bnme.execute-api.us-east-1.amazonaws.com/stage/", json=payload)
+    url = "https://8sng98bnme.execute-api.us-east-1.amazonaws.com/stage/"
+
+    data = {"query": query}
+
+    headers = {"Content-Type": "application/json"}
+
+    response = requests.post(url, data=json.dumps(data), headers=headers)
     if response.status_code == 200:
-        data = response.json()
-        ad_text = data['body']['response']
-    return ad_text
+        result = response.json()
+        response_body = result.get('body', {})  # Obtener el campo 'body' como un diccionario
+        response_text = response_body.get('response', '')  # Obtener el campo 'response' dentro de 'body'
+
+        return(response_text)
+    else:
+        return "¡No eres tú, soy yo!"
+    
