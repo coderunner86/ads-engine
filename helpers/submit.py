@@ -1,6 +1,6 @@
 #helpers/submit.py
-from client.entities.entity import Session
-from client.entities.results import Result
+from entities.entity import Session
+from entities.results import Result
 from flask import request
 def submitaction():
     action = request.form.get('action')
