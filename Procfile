@@ -1,1 +1,1 @@
-web: gunicorn ads-engine:app
+web: python ads-engine:app
