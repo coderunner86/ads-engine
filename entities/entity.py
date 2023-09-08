@@ -4,11 +4,11 @@ from datetime import datetime
 from sqlalchemy import create_engine, Column, String, Integer, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-
-db_url = 'localhost:3306'
-db_name = 'user_db'
-db_user = 'newuser'
-db_password = 'password'
+#mysql://lzacjlvbwvek7ruo:qv899q7jdqolsuyo@ao9moanwus0rjiex.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/gj7n74l4z1idmjii
+db_url = 'ao9moanwus0rjiex.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306'
+db_name = 'gj7n74l4z1idmjii'
+db_user = 'lzacjlvbwvek7ruo'
+db_password = 'qv899q7jdqolsuyo'
 engine = create_engine(f'mysql://{db_user}:{db_password}@{db_url}/{db_name}')
 Session = sessionmaker(bind=engine)
 
