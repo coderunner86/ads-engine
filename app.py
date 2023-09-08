@@ -11,14 +11,14 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, Length
 from flask_cors import CORS
 
-from .entities.entity import engine, Base
+from entities.entity import engine, Base
 
-from .engine.open_ai_request import get_openai_response
-from .engine.database import save_recommendation
-from .engine.download_csv import download_csv
+from engine.open_ai_request import get_openai_response
+from engine.database import save_recommendation
+from engine.download_csv import download_csv
 
-from .helpers.results import showresults
-from .helpers.submit import submitaction
+from helpers.results import showresults
+from helpers.submit import submitaction
 
 app = Flask(__name__)
 app.secret_key = '&f2S4c./kdw3SG450xs#FR!'  
