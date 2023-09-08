@@ -76,6 +76,9 @@ def show_results():
 def download_csv_file():
     response = download_csv()
     return response
-
+    
+@app.route('/privacy-policy, methods=['GET'])
+def privacy():
+    return render_template('privacy-policy.html')
 if __name__ == '__main__':
     app.run(port=5001, debug=False)
