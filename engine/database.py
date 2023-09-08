@@ -1,6 +1,6 @@
 # helpers/database.py
-from client.entities.entity import Session
-from client.entities.results import Result
+from entities.entity import Session
+from entities.results import Result
 
 def save_recommendation(user_input, ad_text):
     result = Result(
