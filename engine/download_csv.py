@@ -15,7 +15,7 @@ def download_csv():
             csv_string += ','.join([str(ad[0]), str(ad[1] if ad[1] is not None else '')]) + '\n'
 
 
-    data_dir = 'data' 
+    data_dir = 'static' 
     csv_filename = 'ads_train.csv'
 
     csv_path = os.path.join(data_dir, csv_filename)
