@@ -80,5 +80,10 @@ def download_csv_file():
 @app.route('/privacy-policy', methods=['GET'])
 def privacy():
     return render_template('privacy-policy.html')
+    
+@app.route('/delete-data', methods=['GET'])
+def deleteuserdata():
+    return render_template('delete-data.html')
+    
 if __name__ == '__main__':
     app.run(port=5001, debug=False)
